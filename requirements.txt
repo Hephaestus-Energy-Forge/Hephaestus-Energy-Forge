@@ -1,7 +1,0 @@
-wikitables
-pandas
-python-markdown-math
-mkdocs-material
-mkdocs-simple-hooks
-pillow
-cairosvg

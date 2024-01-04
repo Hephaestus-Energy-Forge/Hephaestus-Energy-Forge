@@ -15,8 +15,9 @@
         inherit system;
       };
     in pkgs.mkShell {
+      #LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
       packages = with pkgs; [
-        stdenv.cc.cc.lib 
+        python311Packages.mkdocs-material
       ];
     };
   };
