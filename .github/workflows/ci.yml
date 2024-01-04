@@ -25,5 +25,5 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material 
+      - run: pip install mkdocs-material wikitables pandas python-markdown-math mkdocs-material mkdocs-simple-hooks pillow cairosvg
       - run: mkdocs gh-deploy --force
