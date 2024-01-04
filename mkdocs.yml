@@ -1,3 +1,41 @@
-site_name: My Docs
+site_name: Statistical Physics and Thermodynamics
+repo_url: https://hephaestus-energy-forge.github.io/Hephaestus-Energy-Forge/
+
+nav:
+  - Preface: 'index.md'
+  - Phonons and specific Heat:
+      - Einstein model: '1_einstein_model.md'
+
 theme:
   name: material
+  logo: logo.png
+  features:
+    - navigation.instant
+    - content.code.copy
+  palette:
+    primary: 'white'
+    accent: 'indigo'
+
+plugins:
+  - search
+  - mkdocs-simple-hooks:
+      hooks:
+        on_page_read_source: "execute:on_page_read_source"
+        on_page_markdown: "execute:on_page_markdown"
+
+markdown_extensions:
+
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.extra
+  - abbr
+  - footnotes
+  - meta
+
+copyright: "Copyright © 2024 Konstantin Unruh"
