@@ -25,6 +25,6 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material wikitables pandas python-markdown-math mkdocs-material mkdocs-simple-hooks nbconvert pillow cairosvg
+      - run: pip install mkdocs-material wikitables jupytext pandas python-markdown-math mkdocs-material mkdocs-simple-hooks nbconvert pillow cairosvg
       - run: python execute.py
       - run: mkdocs gh-deploy --force
