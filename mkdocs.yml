@@ -6,6 +6,12 @@ nav:
   - Phonons and specific Heat:
       - Einstein model: '1_einstein_model.md'
 
+plugins:
+  - mkdocs-simple-hooks:
+      hooks:
+        on_page_read_source: "execute:on_page_read_source"
+        on_page_markdown: "execute:on_page_markdown"
+
 theme:
   name: material
   logo: logo.png
@@ -19,13 +25,26 @@ theme:
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
-
-extra_javascript:
-  - javascripts/katex.js 
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.extra
+  - abbr
+  - footnotes
+  - meta
 
 extra_css:
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+  - 'https://use.fontawesome.com/releases/v5.8.1/css/all.css'
+  - 'styles/mathjax_hotfix.css'
+  - 'styles/thebelab.css'
+
+extra_javascript:
+  - 'scripts/mathjaxhelper.js'
+  - 'https://polyfill.io/v3/polyfill.min.js?features=es6'
+  - 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  - 'https://cdn.plot.ly/plotly-latest.min.js'
 
 copyright: "Copyright © 2024 Konstantin Unruh"

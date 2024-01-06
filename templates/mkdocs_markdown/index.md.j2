@@ -1,0 +1,33 @@
+{% extends 'markdown/index.md.j2' %}
+
+{% block input %}
+{% if "initialize" in cell.metadata.tags %}
+<div class="thebelab-init-code">
+  <pre class="thebelab-code" data-executable="true" data-language="python">
+    {{cell.source}}
+  </pre>
+</div>
+{% else %}
+<pre class="thebelab-code" data-executable="true" data-language="python">{{cell.source}}</pre>
+{% endif %}
+{% endblock %}
+
+{%- block data_other -%}
+{%- for type in output.data | filter_data_type -%}
+{%- if type == 'application/vnd.plotly.v1+json' -%}
+{%- set fname = output.metadata.filenames['application/vnd.plotly.v1+json'] -%}
+{%- set plotly_url = fname | path2url -%}
+{%- set div_id = fname.split('/') | last -%}
+<div id="{{div_id}}" data-plotlySource="../{{ plotly_url }}" class="plotlyPlaceholder" style="min-height: 75%;"></div>
+{%- endif -%}
+{%- endfor -%}
+{%- endblock -%}
+
+{% block error %}
+{% endblock error %}
+
+{% block stream %}
+{%- if output.name == 'stdout' -%}
+{{ output.text | indent }}
+{%- endif -%}
+{% endblock stream %}

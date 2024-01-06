@@ -23,7 +23,7 @@ import plotly.offline as py
 import plotly.graph_objs as go
 from ipywidgets import interact, FloatSlider, Layout
 
-from common import draw_classic_axes, configure_plotting
+from code.common import draw_classic_axes, configure_plotting
 
 configure_plotting()
 ```
