@@ -25,5 +25,5 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material
+      - run: pip install mkdocs-material ipykernel nbconvert traitlets jupytext pandas python-markdown-math mkdocs-simple-hooks pillow cairosvg matplotlib scipy plotly ipywidgets
       - run: mkdocs gh-deploy --force
