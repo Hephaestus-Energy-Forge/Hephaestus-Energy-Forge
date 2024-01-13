@@ -28,36 +28,18 @@ from code.common import draw_classic_axes, configure_plotting
 
 configure_plotting()
 ```
-
-_(based on chapter 2.1 of the book)_
-
-!!! success "Expected prerequisites"
-
-    Before the start of this lecture, you should be able to:
-
-    - Write down the energy spectrum of a quantum harmonic oscillator
-    - Recall the definition of the partition function and calculate it for the quantum harmonic oscillator
-    - Describe the equipartition theorem
-    - Write down the Bose-Einstein distribution
-
-
-!!! summary "Learning goals"
-
-    After this lecture you will be able to:
-
-    - Write down the expected number of excitations in a quantum harmonic oscillator (a bosonic mode) at temperature $T$ 
-
-
+We consider a random variable $x$ which has a set of possible outcomes $S = \{x_1, x_2, ...\}$. 
 
 
 ```python
 # Defining variables
 mu = 0
-sigma = 1
-sigma_range = np.arange(0.01, 1, 0.05)
-active = int(len(sigma_range)/2)
-x_range = np.linspace(-2, 2, 100)
-
+sigma = 0.05
+sigma_range = np.arange(0.04, 0.5, 0.01)
+sigma_length = len(sigma_range)
+active = 1
+x_range = np.linspace(-2, 2, 1000)
+length = len(x_range)
 
 # Create figure
 fig = go.Figure()
@@ -79,16 +61,18 @@ for current_sigma in sigma_range:
             fillcolor = 'lightblue'
         ))
 
+fig.update_xaxes(range=[-1, 1])
+fig.update_yaxes(range=[0, 10]) 
 fig.data[active].visible = True
 
     
 # Creation of the aditional images
 steps = []
-for i in range(int(len(fig.data))):
+for i in range(sigma_length):
     step = dict(
         method = "update",
-        args = [{"visible": [False] * len(fig.data)}],
-        value = str(0.1*(i+1))
+        args = [{"visible": [False] * length}],
+        value = str(sigma_range[i])
     )
     step["args"][0]["visible"][i] = True
     steps.append(step)
@@ -101,7 +85,7 @@ sliders = [dict(
     active = active,
     name = r'Standard deviation',
     font_size = 16,
-    currentvalue = {"prefix": r"Standard deviation:"},
+    currentvalue = {"prefix": r"Standard deviation: "},
     pad = {"t": 50},
     steps = steps,
 )]
@@ -110,6 +94,11 @@ sliders = [dict(
 fig.update_layout(
     sliders = sliders,
 )
+
+for i in range(sigma_length):
+    fig['layout']['sliders'][0]['steps'][i]['label'] = ' %.2f ' % sigma_range[i]
+
+
 fig
 ```
 
