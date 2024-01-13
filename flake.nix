@@ -18,7 +18,6 @@
       #LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
       packages = with pkgs; [
         python311Packages.mkdocs-material
-#        python311Packages.pathlib
         python311Packages.ipykernel
         python311Packages.nbconvert
         python311Packages.traitlets

@@ -1,10 +1,10 @@
-site_name: Statistical Physics and Thermodynamics
+site_name: Statistical Mechanics and Thermodynamics
 repo_url: https://hephaestus-energy-forge.github.io/Hephaestus-Energy-Forge/
 
 nav:
-  - Preface: 'index.md'
-  - Phonons and specific Heat:
-      - Einstein model: '1_einstein_model.md'
+  - About: 'index.md'
+  - Statistical mechanics:
+      - Basics of probability theory: '1_basics_of_probability_theory.md'
 
 plugins:
   - mkdocs-simple-hooks:
