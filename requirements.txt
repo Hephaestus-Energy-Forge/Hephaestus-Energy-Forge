@@ -1,0 +1,15 @@
+mkdocs-material
+ipykernel
+nbconvert
+traitlets
+jupytext
+pandas
+python-markdown-math
+mkdocs-simple-hooks
+pillow
+cairosvg
+matplotlib
+scipy
+plotly
+ipywidgets
+
