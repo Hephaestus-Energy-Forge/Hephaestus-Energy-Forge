@@ -2,7 +2,7 @@
 
 ## Run
 
-### NixOS
+### Nix
 
 Dependencies are managed with the nix package manager. After cloning the repo run
 
