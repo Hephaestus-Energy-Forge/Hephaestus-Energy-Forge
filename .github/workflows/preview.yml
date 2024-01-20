@@ -19,7 +19,8 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - name: Install dependencies
       - uses: actions/cache@v3
         with:
           key: mkdocs-material-${{ env.cache_id }}
@@ -27,6 +28,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material ipykernel nbconvert traitlets jupytext pandas python-markdown-math mkdocs-simple-hooks pillow cairosvg matplotlib scipy plotly ipywidgets
+      - name: Build site
       - run: mkdocs build
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
