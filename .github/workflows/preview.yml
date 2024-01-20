@@ -11,8 +11,6 @@ on:
 permissions:
   contents: write
 
-concurrency: preview-${{ github.ref }}
-
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
