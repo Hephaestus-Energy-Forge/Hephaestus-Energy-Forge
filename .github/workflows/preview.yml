@@ -31,6 +31,5 @@ jobs:
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           preview-branch: pr-preview
           source-dir: ./site/
