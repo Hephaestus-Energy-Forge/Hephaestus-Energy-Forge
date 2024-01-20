@@ -3,10 +3,11 @@ repo_url: https://hephaestus-energy-forge.github.io/Hephaestus-Energy-Forge/
 
 nav:
   - About: 'index.md'
-  - Statistical mechanics:
-      - Basics of probability theory: '1_basics_of_probability_theory.md'
+  - 1. Statistical mechanics:
+      - 1.1 Basics of probability theory: '1_basics_of_probability_theory.md'
 
 plugins:
+  - search
   - mkdocs-simple-hooks:
       hooks:
         on_page_read_source: "execute:on_page_read_source"
@@ -21,6 +22,16 @@ theme:
   palette:
     primary: 'white'
     accent: 'indigo'
+
+  features:
+    - search.highlight
+    - search.share
+    - toc.follow
+    - navigation.sections
+    - navigation.tabs
+    - navigation.expand
+    - content.tooltips
+    - header.autohide
 
 markdown_extensions:
   - pymdownx.arithmatex:
