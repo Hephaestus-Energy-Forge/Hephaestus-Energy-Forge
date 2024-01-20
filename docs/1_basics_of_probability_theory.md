@@ -28,80 +28,24 @@ from code.common import draw_classic_axes, configure_plotting
 
 configure_plotting()
 ```
-We consider a random variable $x$ which has a set of possible outcomes $S = \{x_1, x_2, ...\}$. 
+
+# 1 Mathematische Beschreibung von Zufallssituationen
+
+## 1.1 Wahrscheinlichkeitsräume
 
 
-```python
-# Defining variables
-mu = 0
-sigma = 0.05
-sigma_range = np.arange(0.04, 0.5, 0.01)
-sigma_length = len(sigma_range)
-active = 1
-x_range = np.linspace(-2, 2, 1000)
-length = len(x_range)
+### Definition ($ \sigma $-Algebra)
 
-# Create figure
-fig = go.Figure()
+Für eine Menge $ \Omega $ heißt $ \mathcal F \subset \mathcal P (\Omega) $ eine $ \sigma $-Algebra, wenn die Eigenschaften
 
-def gauss(sigma, mu, x):
-   return (1/np.sqrt(2*math.pi*sigma**2)) * math.e**(-(x-mu)**2/(2*sigma)**2)
+a) $ \Omega \in \mathcal F $
 
-for current_sigma in sigma_range:
-    fig.add_trace(
-        go.Scatter(
-            visible = False,
-            x = x_range,
-            y = [gauss(current_sigma, mu, x) for x in x_range] ,
-            mode = 'lines',
-            line_color = 'blue',
-            line_dash = 'dot',
-            name = 'Gauss distribution sigma = ' + str(sigma),
-            fill = 'tonextx',
-            fillcolor = 'lightblue'
-        ))
+b) $ A \in \mathcal F \Rightarrow A^C := \Omega \setminus A \in \mathcal F$
 
-fig.update_xaxes(range=[-1, 1])
-fig.update_yaxes(range=[0, 10]) 
-fig.data[active].visible = True
+c) $ A_1, A_2, \dots \in \mathcal F \Rightarrow \bigcup_{i\geq 1} A_i \in \mathcal F $
 
-    
-# Creation of the aditional images
-steps = []
-for i in range(sigma_length):
-    step = dict(
-        method = "update",
-        args = [{"visible": [False] * length}],
-        value = str(sigma_range[i])
-    )
-    step["args"][0]["visible"][i] = True
-    steps.append(step)
+erfüllt sind.
 
-# Creating the slider
-sliders = [dict(
-    tickcolor = 'White',
-    font_color = 'White',
-    currentvalue_font_color = 'Black',
-    active = active,
-    name = r'Standard deviation',
-    font_size = 16,
-    currentvalue = {"prefix": r"Standard deviation: "},
-    pad = {"t": 50},
-    steps = steps,
-)]
+### Definition (Ereignisraum)
+Sei $ \Omega \neq \emptyset $ und $ \mathcal F \subset \mathcal P (\Omega) $ eine $ \sigma $-Algebra. Dann heißt das Paar $ (\Omega, \mathcal F)$ Ereignisraum.
 
-# Updating the images for each step
-fig.update_layout(
-    sliders = sliders,
-)
-
-for i in range(sigma_length):
-    fig['layout']['sliders'][0]['steps'][i]['label'] = ' %.2f ' % sigma_range[i]
-
-
-fig
-```
-
-
-[^1]: Data source: [Wikipedia](https://en.wikipedia.org/wiki/Heat_capacities_of_the_elements_(data_page)), mainly the CRC Handbook of Chemistry and Physics.
-[^2]: The data in this plot is the same as what Einstein used, but the curve in this plot is improved compared to what Einstein did, see [this blog post](https://quantumtinkerer.tudelft.nl/blog/footsteps-of-einstein/) for the backstory.
