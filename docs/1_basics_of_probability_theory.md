@@ -61,6 +61,6 @@ Ist eine $ \sigma $-Algebra in $ \Omega $ festgelegt, so heißt jedes $ A \in \m
     
     2. $ \sigma $-Additivität: Für paarweise disjunkte Ereignisse $ A_1, A_2, \dots \in \mathcal F $ gilt $$ P (\bigcup_{i \geq 1} a_i) = \sum_{i \geq 1} P(A_i) $$
     
-    heißt **Wahrscheinlichkeitsverteilung** auf $ (\Sigma, \mathcal F) $. Das Tripel $ (\Sigma, \mathcal F, P) $ heißt dann ein **Wahrscheinlichkeitsraum**.
+    heißt **Wahrscheinlichkeitsverteilung** auf $ (\Omega, \mathcal F) $. Das Tripel $ (\Omega, \mathcal F, P) $ heißt dann ein **Wahrscheinlichkeitsraum**.
 
 
