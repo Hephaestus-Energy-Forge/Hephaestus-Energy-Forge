@@ -23,13 +23,21 @@ to serve the site.
 Build the image with the provided Dockerfile
 
 ``` bash
-docker build -t website:latest .
+docker build -t web .
 ```
 
 Create a container from the image and run it:
 
 ``` bash
-docker run --name website_container -p 8000:8000 --rm website:latest
+docker run --name web_c -d -p 8000:8000 --rm web
+```
+
+Then, navigate to http://localhost:8000.
+
+To stop and remove the container run
+
+``` bash
+docker stop web_c
 ```
 
 ### Manually
