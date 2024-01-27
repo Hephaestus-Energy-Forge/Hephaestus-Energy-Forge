@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
     
     
       
@@ -479,6 +479,7 @@ configure_plotting()
 
 <h1 id="1-mathematische-beschreibung-von-zufallssituationen">1 Mathematische Beschreibung von Zufallssituationen<a class="headerlink" href="#1-mathematische-beschreibung-von-zufallssituationen" title="Permanent link">&para;</a></h1>
 <h2 id="11-wahrscheinlichkeitsraume">1.1 Wahrscheinlichkeitsräume<a class="headerlink" href="#11-wahrscheinlichkeitsraume" title="Permanent link">&para;</a></h2>
+<p>Wie definiert man die Ereignisse, denen man sinnvollerweise eine Wahrscheinlichkeit zuordnen kann? Wenn $ \Omega $ die Grundmenge ist, möchte man im Regelfall gewissen Teilmengen eine Wahrscheinlichkeit zuordenen. Als Beispiel sei ein Würfelwurf genannt. Nun kann einen beispielsweise die Wahrscheinlichkeit interessierenn, dass man eine Zahl $ \leq 3 $ würfelt. Dann ist $ \Omega = { 1,2,3,4,5,6 } $ und die gesuchte Teilmenge ist $ { 1,2,3 } $. Leider kann man i.A. nicht alle Teilmengen einer Menge, also die Potenzmenge als mögliche Ereignisse verwenden (FOOTNOTE). Dafür aber fast alle:  </p>
 <div class="admonition summary">
 <p class="admonition-title">Definition ($ \sigma $-Algebra)</p>
 <p>Für eine Menge $ \Omega $ heißt $ \mathcal F \subset \mathcal P (\Omega) $ eine <strong>$ \sigma $-Algebra</strong>, wenn die Eigenschaften</p>
@@ -495,13 +496,14 @@ configure_plotting()
 </ol>
 <p>erfüllt sind.</p>
 </div>
+<p>Damit kommen wir auf kanonische Art und Weise zu dem Raum der für uns von Interesse sein wird.</p>
 <div class="admonition summary">
-<p class="admonition-title">Definition (Ereignisraum)</p>
-<p>Sei $ \Omega \neq \emptyset $ und $ \mathcal F \subset \mathcal P (\Omega) $ eine $ \sigma $-Algebra. Dann heißt das Paar $ (\Omega, \mathcal F)$ <strong>Ereignisraum</strong>.</p>
+<p class="admonition-title">Definition (Ereignisraum, messbarer Raum)</p>
+<p>Sei $ \Omega \neq \emptyset $ und $ \mathcal F \subset \mathcal P (\Omega) $ eine $ \sigma $-Algebra. Dann heißt das Paar $ (\Omega, \mathcal F)$ <strong>Ereignisraum</strong> oder ein <strong>messbarer Raum</strong>.</p>
 </div>
-<p>Ist eine $ \sigma $-Algebra in $ \Omega $ festgelegt, so heißt jedes $ A \in \mathcal F $ ein <strong>Ereignis</strong>. </p>
+<p>Wie bereits angedeutet nennen wir nun einfach jedes $ A \in \mathcal F $ ein <strong>Ereignis</strong> oder eine <strong>messbare Menge</strong>. Als letzten Schritt wollen wir noch herausfinden können wie wahrscheinlich denn nun der Eintritt eines bestimmten Ereignisses ist. Dafür definieren wir das Wahrscheinlichkeitsmaß.</p>
 <div class="admonition summary">
-<p class="admonition-title">Definition (Wahrscheinlichkeitsverteilung)</p>
+<p class="admonition-title">Definition (Wahrscheinlichkeitsverteilung, Wahrscheinlichkeitsmaß)</p>
 <p>Sei $ (\Omega, \mathcal F)$ ein Ereignisraum. Eine Funktion $ P: \mathcal F \to [0,1] $ mit den Eigenschaften</p>
 <ol>
 <li>
@@ -511,7 +513,12 @@ configure_plotting()
 <p>$ \sigma $-Additivität: Für paarweise disjunkte Ereignisse $ A_1, A_2, \dots \in \mathcal F $ gilt $$ P (\bigcup_{i \geq 1} a_i) = \sum_{i \geq 1} P(A_i) $$</p>
 </li>
 </ol>
-<p>heißt <strong>Wahrscheinlichkeitsverteilung</strong> auf $ (\Omega, \mathcal F) $. Das Tripel $ (\Omega, \mathcal F, P) $ heißt dann ein <strong>Wahrscheinlichkeitsraum</strong>.</p>
+<p>heißt <strong>Wahrscheinlichkeitsmaß</strong> oder <strong>Wahrscheinlichkeitsverteilung</strong> auf $ (\Omega, \mathcal F) $. Das Tripel $ (\Omega, \mathcal F, P) $ heißt dann ein <strong>Wahrscheinlichkeitsraum</strong>.</p>
+</div>
+<p>Nun haben wir alle Zutaten eines Wahrscheinlichkeitsraums kennengelernt. Eine der wichtigsten Implementierungen eines Wahrscheinlichkeitsraum ist $ (\mathbb R^n, \mathcal B^n, \lambda^n) $. Hierbei bezeichnet $ \mathcal B^n $ die Borel'sche $ \sigma $-Algebra. Das ist die von der Menge der kompakten Quader mit rationalen Eckpunkten erzeugte $ \sigma $-Algebra auf $ \mathbb R^n $. Wie genau $ \mathcal B^n $ ausschaut ist uninteressant. Es genügt sich zu merken, dass $ \mathcal B^n $ so gut wie alle praktisch vorkommende Teilmengen von $ \mathbb R^n $ enthält. Das Maß $ \lambda^n $ ist das Lebesgue-Maß.</p>
+<div class="admonition summary">
+<p class="admonition-title">Definition (Lebesgue-Maß)</p>
+<p>Die Abbildung $ \lambda^n : \mathcal B^n \to [0, \infty] $, die jedem $ A \in \mathcal B^n $ sein $ n $-dimensionales Volumen $$ \lambda^n (A) := \int 1_A (x) \ dx $$ zuordnet heißt Lebesgue-Maß auf $ \mathbb R^n $. Hierbei bezeichnet $ 1_A $ die Indikatorfunktion von $ A $.</p>
 </div>
 
 
@@ -563,10 +570,10 @@ configure_plotting()
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["search.highlight", "search.share", "toc.follow", "navigation.sections", "navigation.tabs", "navigation.expand", "content.tooltips", "header.autohide"], "search": "../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.highlight", "search.share", "toc.follow", "navigation.sections", "navigation.tabs", "navigation.expand", "content.tooltips", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      <script src="../assets/javascripts/bundle.c18c5fb9.min.js"></script>
       
         <script src="../scripts/mathjaxhelper.js"></script>
       
